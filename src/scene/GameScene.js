@@ -19,7 +19,6 @@ var GameScene = cc.Scene.extend({
 
     _touchY: 0,
 
-
     ctor: function () {
         this._super();
         var layer = new cc.Layer();
@@ -235,6 +234,12 @@ var GameScene = cc.Scene.extend({
                 break;
 
             case GameConstants.GAME_STATE_FLYING:
+                //TODO 游戏关卡控制
+                if (Game.user.score > GameConstants.LEVEL_ONE_THRESHOLD_SCORE && Game.user.distance > GameConstants.LEVEL_ONE_THRESHOLD_DISTANCE) {
+                    Game.user.gameLevel += 1;
+                    this._gameOver();
+                }
+
                 // If drank coffee, fly faster for a while.
                 if (Game.user.coffee > 0)
                     Game.user.heroSpeed += (GameConstants.HERO_MAX_SPEED - Game.user.heroSpeed) * 0.2;

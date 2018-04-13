@@ -11,7 +11,7 @@ var Game = {
         coffee:0,
         mushroom:0,
         hitObstacle:0,
-        level:0
+        gameLevel:0
     },
 
     gameState:null
