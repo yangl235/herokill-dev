@@ -283,19 +283,19 @@ var FoodManager = cc.Class.extend({
                     continue;
                 }
                 else {
-                    // Collision detection - Check if the hero eats a food item.
+                    //碰撞检测，检验英雄是否吸收了道具
                     var heroItem_xDist = item.x - hero.x;
                     var heroItem_yDist = item.y - hero.y;
                     var heroItem_sqDist = heroItem_xDist * heroItem_xDist + heroItem_yDist * heroItem_yDist;
 
                     if (heroItem_sqDist < 5000) {
-                        // If hero eats an item, add up the score.
+                        //如果英雄吸收了道具，增加分数
                         if (item.type <= GameConstants.ITEM_TYPE_5) {
                             Game.user.score += item.type;
                             Sound.playEat();
                         }
                         else if (item.type == GameConstants.ITEM_TYPE_COFFEE) {
-                            // If hero drinks coffee, add up the score.
+                            //如果英雄吸收了加速道具，增加分数，并显示游戏效果
                             Game.user.score += 1;
 
                             // How long does coffee power last? (in seconds)
