@@ -235,10 +235,10 @@ var GameScene = cc.Scene.extend({
 
             case GameConstants.GAME_STATE_FLYING:
                 //TODO 游戏关卡控制
-                if (Game.user.score > GameConstants.LEVEL_ONE_THRESHOLD_SCORE && Game.user.distance > GameConstants.LEVEL_ONE_THRESHOLD_DISTANCE) {
-                    Game.user.gameLevel += 1;
-                    this._gameOver();
-                }
+                // if (Game.user.score > GameConstants.LEVEL_ONE_THRESHOLD_SCORE && Game.user.distance > GameConstants.LEVEL_ONE_THRESHOLD_DISTANCE) {
+                //     Game.user.gameLevel += 1;
+                //     this._gameOver();
+                // }
 
                 // If drank coffee, fly faster for a while.
                 if (Game.user.coffee > 0)
