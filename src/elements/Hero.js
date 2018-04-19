@@ -11,6 +11,7 @@ var Hero = cc.Sprite.extend({
     ctor:function () {
         this._super("#fly_0001.png");
         this._animation = new cc.Animation();
+        //由于英雄图片素材不符合要求，英雄连续动作实际上并没有效果
         for (var i = 1; i < 20; i++) {
             this._animation.addSpriteFrame(cc.spriteFrameCache.getSpriteFrame("fly_00" + (i<10?('0'+i):i) + ".png"));
         }

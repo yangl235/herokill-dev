@@ -4,6 +4,8 @@
 
 var GameBackground = cc.Layer.extend({
 
+    //background settings
+
     _bg1:null,
     _bg2:null,
     _bg3:null,

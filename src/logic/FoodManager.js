@@ -174,7 +174,7 @@ var FoodManager = cc.Class.extend({
 
                     // Create a line based on the height of patternLength, but not exceeding the height of the screen.
                     while (this._patternPosYstart + this._patternStep < this._patternPosY + this._patternLength
-                        && this._patternPosYstart + this._patternStep < winSize.height * 0.8) {
+                    && this._patternPosYstart + this._patternStep < winSize.height * 0.8) {
                         item = Item.create(Math.ceil(Math.random() * 5));
                         item.x = winSize.width + item.width;
                         item.y = this._patternPosYstart;
@@ -278,24 +278,23 @@ var FoodManager = cc.Class.extend({
 
                 if (item.x < -80 || Game.gameState == GameConstants.GAME_STATE_OVER) {
                     this._itemsToAnimate.splice(i, 1);
-                    cc.pool.putInPool(item);        //必须先放进池（自己在Item中写了retain操作，再removeChild
+                    //we must put item into pool first.
+                    cc.pool.putInPool(item);
                     this._container.removeChild(item);
                     continue;
                 }
                 else {
-                    //碰撞检测，检验英雄是否吸收了道具
+                    //collision detection, whether hero has collided object
                     var heroItem_xDist = item.x - hero.x;
                     var heroItem_yDist = item.y - hero.y;
                     var heroItem_sqDist = heroItem_xDist * heroItem_xDist + heroItem_yDist * heroItem_yDist;
 
                     if (heroItem_sqDist < 5000) {
-                        //如果英雄吸收了道具，增加分数
                         if (item.type <= GameConstants.ITEM_TYPE_5) {
                             Game.user.score += item.type;
                             Sound.playEat();
                         }
                         else if (item.type == GameConstants.ITEM_TYPE_COFFEE) {
-                            //如果英雄吸收了加速道具，增加分数，并显示游戏效果
                             Game.user.score += 1;
 
                             // How long does coffee power last? (in seconds)
